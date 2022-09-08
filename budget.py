@@ -18,10 +18,11 @@ class Category:
       return True
     return False
 
-    
-
-  def get_balance(self, amount) :
-    self.amount = amount
+  def get_balance(self) :
+    total_cash = 0
+    for item in self.ledger :
+      total_cash += item['amount']
+    return total_cash  
 
 def create_spend_chart(categories):
   return
