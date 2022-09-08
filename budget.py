@@ -50,7 +50,8 @@ class Category:
     def get_withdrawals(self):
         total = 0
         for item in self.ledger :
-          total += item['amount']
+          if item['amount'] < 0 :
+            total += item['amount']
         return total
 
 def create_spend_chart(categories):
