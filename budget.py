@@ -23,6 +23,13 @@ class Category:
     for item in self.ledger :
       total_cash += item['amount']
     return total_cash  
+  
+  def transfer(self, amount, category) : 
+    if self.check_funds(amount) : 
+      self.withdraw(amount, f'Transfer to {category.name}.')
+      category.deposit(amount, f'Transfer from {self.name}.')
+      return True
+    return False  
 
 def create_spend_chart(categories):
   return
