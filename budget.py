@@ -7,7 +7,9 @@ class Category:
     self.amount = amount
     self.description = description
     
-  
+  def withdraw(self, amount, description = '') :
+    self.amount = amount
+    self.description = description
 
 
 def create_spend_chart(categories):
