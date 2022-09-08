@@ -46,7 +46,12 @@ class Category:
         if self.get_balance() >= amount:
             return True
         return False
-
+      
+    def get_withdrawals(self):
+        total = 0
+        for item in self.ledger :
+          total += item['amount']
+        return total
 
 def create_spend_chart(categories):
     return
