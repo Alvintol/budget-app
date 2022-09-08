@@ -60,14 +60,28 @@ def truncate(n):
     multiplier = 10
     return int(n * multiplier) / multiplier
 
+
 def get_totals(categories):
     total = 0
     breakdown = []
     for category in categories:
-      total += category.get_withdrawals()
-      breakdown.append(category.get_withdrawals())
+        total += category.get_withdrawals()
+        breakdown.append(category.get_withdrawals())
     rounded = list(map(lambda item: truncate(item/total), breakdown))
     return rounded
 
+
 def create_spend_chart(categories):
+    title = 'Percentage spent by category\n'
+    yAxis = 100
+    totals = get_totals(categories)
+    while yAxis >= 0:
+        categorySpaces = ' '
+        for total in totals:
+            if total * 100 >= yAxis:
+                categorySpaces += 'o '
+            else:
+                categorySpaces += '  '
+        title += str(yAxis).rjust(3) + '|' + categorySpaces + ('\n')
+    
     return
