@@ -8,9 +8,10 @@ class Category:
         items = ''
         total = 0
         for item in self.ledger:
-          items += f'{item["description"][0:23]:23}' + f'{item["amount"]:>7.2f}' + '\n'
-          
-          total += item['amount']
+            items += f'{item["description"][0:23]:23}' + \
+                f'{item["amount"]:>7.2f}' + '\n'
+
+            total += item['amount']
         output = title + items + 'Total: ' + str(total)
         return output
 
@@ -46,13 +47,19 @@ class Category:
         if self.get_balance() >= amount:
             return True
         return False
-      
+
     def get_withdrawals(self):
         total = 0
-        for item in self.ledger :
-          if item['amount'] < 0 :
-            total += item['amount']
+        for item in self.ledger:
+            if item['amount'] < 0:
+                total += item['amount']
         return total
+
+
+def truncate(n):
+    multiplier = 10
+    return int(n * multiplier) / multiplier
+
 
 def create_spend_chart(categories):
     return
