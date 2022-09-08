@@ -30,6 +30,11 @@ class Category:
       category.deposit(amount, f'Transfer from {self.name}.')
       return True
     return False  
+  
+  def check_funds(self, amount) : 
+    if self.get_balance() >= amount :
+      return True
+    return False
 
 def create_spend_chart(categories):
   return
