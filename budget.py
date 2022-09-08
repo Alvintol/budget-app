@@ -60,6 +60,14 @@ def truncate(n):
     multiplier = 10
     return int(n * multiplier) / multiplier
 
+def get_totals(categories):
+    total = 0
+    breakdown = []
+    for category in categories:
+      total += category.get_withdrawals()
+      breakdown.append(category.get_withdrawals())
+    rounded = list(map(lambda item: truncate(item/total), breakdown))
+    return rounded
 
 def create_spend_chart(categories):
     return
